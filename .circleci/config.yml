@@ -9,19 +9,13 @@ orbs:
 
 jobs:
   build:
-      - run:
-          name: Configure Bundler
-          command: |
-          echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-          source $BASH_ENV
-          gem install bundler
-  docker:
+    docker:
       - image: circleci/ruby:2.6.3-stretch-node
     steps:
       - checkout
       - run:
           name: Which bundler?
           command: bundle -v
-      - ruby/bundle-install
+      - gem install bundler
 # What to do next? Set up a test job. Please see
 # https://circleci.com/docs/2.0/configuration-reference/, for more  info on how to get started.
