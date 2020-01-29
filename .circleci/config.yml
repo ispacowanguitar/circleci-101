@@ -10,8 +10,9 @@ orbs:
 workflows:
   version: 2
   my_workflow:
-    - one
-    - two
+    jobs:
+      - one
+      - two
 jobs:
   one:
     docker:
